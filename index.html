@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agency Worth Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section id="formCard" class="card">
+        <div class="step-indicator" aria-label="Form progress">
+          <span class="step active">1</span>
+          <span class="step">2</span>
+        </div>
+
+        <form id="agencyForm" novalidate>
+          <div class="form-step active" data-step="0">
+            <h1>Let’s get to know your agency</h1>
+            <div class="field-grid">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Jane Smith" required />
+              </label>
+
+              <label>
+                <span>Email Address</span>
+                <input type="email" name="email" placeholder="jane@example.com" required />
+              </label>
+
+              <label>
+                <span>City</span>
+                <input type="text" name="city" placeholder="Austin" required />
+              </label>
+
+              <label>
+                <span>State</span>
+                <input type="text" name="state" placeholder="Texas" required />
+              </label>
+            </div>
+
+            <div class="actions">
+              <button type="button" id="nextStepBtn" class="btn primary">Continue</button>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="1">
+            <h2>Share your agency performance</h2>
+            <div class="field-grid">
+              <label>
+                <span>Revenue</span>
+                <input type="text" name="revenue" inputmode="numeric" placeholder="$0" required />
+              </label>
+
+              <label>
+                <span>Net Income</span>
+                <input type="text" name="netIncome" inputmode="numeric" placeholder="$0" required />
+              </label>
+
+              <label class="full-width">
+                <span>Last 3 years average organic growth (%)</span>
+                <input type="number" name="organicGrowth" placeholder="4%" min="-100" max="1000" step="0.01" required />
+              </label>
+            </div>
+
+            <div class="actions split-actions">
+              <button type="button" id="backStepBtn" class="btn secondary">Back</button>
+              <button type="submit" class="btn primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section id="resultPage" class="card result-page hidden" aria-live="polite">
+        <div id="loadingState" class="loading-state hidden" aria-live="polite">
+          <div class="spinner" aria-label="Loading"></div>
+          <p>Calculating your agency value...</p>
+        </div>
+
+        <div id="successMessage" class="success-message hidden" aria-live="polite">
+          <h3>Your Agency is worth <span id="lowValue"></span> - <span id="highValue"></span></h3>
+          <p id="marginMessage"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
